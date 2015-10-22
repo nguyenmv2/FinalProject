@@ -1,4 +1,4 @@
-package com.core;
+package model.Core;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -34,6 +34,7 @@ public class ItemTest {
         ArrayList<Modifier> testModifierList = new ArrayList<>();
         testModifierList.add(new Modifier());
         item = new Item(testName, testPrice, testModifierList);
+        assertEquals(1, testModifierList.size());
         assertEquals(testName, item.getName());
         assertEquals(testPrice, item.getPrice(), 0.1);
         assertEquals(1, item.getModifiers().size());

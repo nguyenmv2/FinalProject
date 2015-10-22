@@ -1,10 +1,11 @@
-package com.core;
+package model.Core;
 
 
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by hoangocdam on 9/28/15.

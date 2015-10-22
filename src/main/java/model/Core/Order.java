@@ -1,4 +1,4 @@
-package com.core;
+package model.Core;
 
 
 import java.util.ArrayList;
@@ -20,12 +20,12 @@ public class Order {
         return this.id;
     }
 
-    public ArrayList<Item> getItems(){
-        return this.itemList;
-    }
-
     public void setID(int testID) {
         this.id = testID;
+    }
+
+    public ArrayList<Item> getItems(){
+        return this.itemList;
     }
 
     public void addItem(Item testItem) {
