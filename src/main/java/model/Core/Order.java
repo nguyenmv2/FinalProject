@@ -1,6 +1,7 @@
 package model.Core;
 
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 
@@ -9,7 +10,8 @@ import java.util.ArrayList;
  */
 public class Order {
     private int id;
-    private ArrayList<Item> itemList;
+    ArrayList<Item> itemList;
+    BigDecimal total;
 
     public Order(){
         this.id = 0;
@@ -30,5 +32,31 @@ public class Order {
 
     public void addItem(Item testItem) {
         itemList.add(testItem);
+    }
+
+    public BigDecimal calculateTotal(){
+        itemList.forEach(i -> total.add(i.getPrice()));
+        return total;
+    }
+    public boolean containItem(Item item){
+        return itemList.contains(item);
+    }
+    public void transferItem(Item item, Order order) throws Exception {
+        if (containItem(item)){
+            order.getItems().add(item);
+            itemList.remove(item);
+        } else {
+            throw new Exception(String.format("Item %s not found", item.name));
+        }
+    }
+
+    public void transferItems(ArrayList<Item> items, Order order){
+        items.stream().forEach(i -> {
+            try {
+                transferItem(i, order);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 }
